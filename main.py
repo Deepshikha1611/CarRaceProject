@@ -1,8 +1,17 @@
+from os import environ
+environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+import sys
 import pygame
 import time
 import math
 from utils import scale_image, blit_rotate_center, blit_text_center
 pygame.font.init()
+pygame.init()
+pygame.mixer.init()
+
+acc_sound = pygame.mixer.Sound("sounds/acceleration.mp3")
+winning_sound = pygame.mixer.Sound("sounds/winning.mp3")
+losing_sound = pygame.mixer.Sound("sounds/losing.mp3")
 
 GRASS = scale_image(pygame.image.load("imgs/grass.jpg"), 2.5)
 TRACK = scale_image(pygame.image.load("imgs/track.png"), 0.9)
@@ -29,7 +38,7 @@ PATH = [(175, 119), (110, 70), (56, 133), (70, 481), (318, 731), (404, 680), (41
 
 
 class GameInfo:
-    LEVELS = 10
+    LEVELS = 3
 
     def __init__(self, level=1):
         self.level = level
@@ -215,6 +224,11 @@ def move_player(player_car):
         moved = True
         player_car.move_backward()
 
+    if moved:
+        acc_sound.play()
+        acc_sound.set_volume(0.2)
+               
+
     if not moved:
         player_car.reduce_speed()
 
@@ -227,8 +241,11 @@ def handle_collision(player_car, computer_car, game_info):
         FINISH_MASK, *FINISH_POSITION)
     if computer_finish_poi_collide != None:
         blit_text_center(WIN, MAIN_FONT, "You lost!")
+        acc_sound.stop()
+        losing_sound.play()
         pygame.display.update()
         pygame.time.wait(5000)
+        losing_sound.stop()
         game_info.reset()
         player_car.reset()
         computer_car.reset()
@@ -281,10 +298,15 @@ while run:
 
     if game_info.game_finished():
         blit_text_center(WIN, MAIN_FONT, "You won the game!")
+        acc_sound.stop()
+        winning_sound.play()
         pygame.time.wait(5000)
+        winning_sound.stop()
         game_info.reset()
         player_car.reset()
         computer_car.reset()
 
 
 pygame.quit()
+
+sys.exit() 
