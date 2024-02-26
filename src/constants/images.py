@@ -1,0 +1,6 @@
+GRASS_IMAGE_SRC = "src/assets/images/grass.jpg"
+TRACK_IMAGE_SRC = "src/assets/images/track.png"
+TRACK_BORDER_IMAGE_SRC = "src/assets/images/track-border.png"
+FINISH_IMAGE_SRC = "src/assets/images/finish.png"
+RED_CAR_IMAGE_SRC = "src/assets/images/red-car.png"
+GREEN_CAR_IMAGE_SRC = "src/assets/images/green-car.png"
