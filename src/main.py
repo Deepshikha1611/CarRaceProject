@@ -1,68 +1,38 @@
 from os import environ
 
 environ["PYGAME_HIDE_SUPPORT_PROMPT"] = "1"
-import math
 import sys
-import time
-
 import pygame
-
-import constants.images as IMAGES
-import constants.sounds as SOUNDS
-from utils.utils import blit_rotate_center, blit_text_center, scale_image
+import time
+import math
+from utils.helper import blit_rotate_center, blit_text_center
 
 pygame.font.init()
 pygame.init()
 pygame.mixer.init()
 
-acc_sound = pygame.mixer.Sound(SOUNDS.ACCELERATION_SOUND_SRC)
-winning_sound = pygame.mixer.Sound(SOUNDS.WINNING_SOUND_SRC)
-losing_sound = pygame.mixer.Sound(SOUNDS.LOSING_SOUND_SRC)
+from constants.sounds import ACC_SOUND, LOSING_SOUND, WINNING_SOUND
+from constants.images import (
+    GRASS_IMAGE,
+    TRACK_IMAGE,
+    FINISH_IMAGE,
+    TRACK_BORDER_IMAGE,
+    RED_CAR_IMAGE,
+    GREEN_CAR_IMAGE,
+)
+from constants import COMPUTER_PATH, GAME_FPS, FINISH_POSITION
 
-GRASS = scale_image(pygame.image.load(IMAGES.GRASS_IMAGE_SRC), 2.5)
-TRACK = scale_image(pygame.image.load(IMAGES.TRACK_IMAGE_SRC), 0.9)
 
-TRACK_BORDER = scale_image(pygame.image.load(IMAGES.TRACK_BORDER_IMAGE_SRC), 0.9)
-TRACK_BORDER_MASK = pygame.mask.from_surface(TRACK_BORDER)
+TRACK_BORDER_MASK = pygame.mask.from_surface(TRACK_BORDER_IMAGE)
 
-FINISH = pygame.image.load(IMAGES.FINISH_IMAGE_SRC)
-FINISH_MASK = pygame.mask.from_surface(FINISH)
-FINISH_POSITION = (130, 250)
+FINISH_MASK = pygame.mask.from_surface(FINISH_IMAGE)
 
-RED_CAR = scale_image(pygame.image.load(IMAGES.RED_CAR_IMAGE_SRC), 0.55)
-GREEN_CAR = scale_image(pygame.image.load(IMAGES.GRASS_IMAGE_SRC), 0.55)
 
-WIDTH, HEIGHT = TRACK.get_width(), TRACK.get_height()
+WIDTH, HEIGHT = TRACK_IMAGE.get_width(), TRACK_IMAGE.get_height()
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Racing Game!")
 
 MAIN_FONT = pygame.font.SysFont("comicsans", 44)
-
-FPS = 60
-PATH = [
-    (175, 119),
-    (110, 70),
-    (56, 133),
-    (70, 481),
-    (318, 731),
-    (404, 680),
-    (418, 521),
-    (507, 475),
-    (600, 551),
-    (613, 715),
-    (736, 713),
-    (734, 399),
-    (611, 357),
-    (409, 343),
-    (433, 257),
-    (697, 258),
-    (738, 123),
-    (581, 71),
-    (303, 78),
-    (275, 377),
-    (176, 388),
-    (178, 260),
-]
 
 
 class GameInfo:
@@ -143,7 +113,7 @@ class AbstractCar:
 
 
 class PlayerCar(AbstractCar):
-    IMG = RED_CAR
+    IMG = RED_CAR_IMAGE
     START_POS = (180, 200)
 
     def reduce_speed(self):
@@ -156,7 +126,7 @@ class PlayerCar(AbstractCar):
 
 
 class ComputerCar(AbstractCar):
-    IMG = GREEN_CAR
+    IMG = GREEN_CAR_IMAGE
     START_POS = (150, 200)
 
     def __init__(self, max_vel, rotation_vel, path=[]):
@@ -253,8 +223,8 @@ def move_player(player_car):
         player_car.move_backward()
 
     if moved:
-        acc_sound.play()
-        acc_sound.set_volume(0.2)
+        ACC_SOUND.play()
+        ACC_SOUND.set_volume(0.2)
 
     if not moved:
         player_car.reduce_speed()
@@ -267,11 +237,11 @@ def handle_collision(player_car, computer_car, game_info):
     computer_finish_poi_collide = computer_car.collide(FINISH_MASK, *FINISH_POSITION)
     if computer_finish_poi_collide != None:
         blit_text_center(WIN, MAIN_FONT, "You lost!")
-        acc_sound.stop()
-        losing_sound.play()
+        ACC_SOUND.stop()
+        LOSING_SOUND.play()
         pygame.display.update()
         pygame.time.wait(5000)
-        losing_sound.stop()
+        LOSING_SOUND.stop()
         game_info.reset()
         player_car.reset()
         computer_car.reset()
@@ -289,17 +259,17 @@ def handle_collision(player_car, computer_car, game_info):
 run = True
 clock = pygame.time.Clock()
 images = [
-    (GRASS, (0, 0)),
-    (TRACK, (0, 0)),
-    (FINISH, FINISH_POSITION),
-    (TRACK_BORDER, (0, 0)),
+    (GRASS_IMAGE, (0, 0)),
+    (TRACK_IMAGE, (0, 0)),
+    (FINISH_IMAGE, FINISH_POSITION),
+    (TRACK_BORDER_IMAGE, (0, 0)),
 ]
 player_car = PlayerCar(4, 4)
-computer_car = ComputerCar(2, 4, PATH)
+computer_car = ComputerCar(2, 4, COMPUTER_PATH)
 game_info = GameInfo()
 
 while run:
-    clock.tick(FPS)
+    clock.tick(GAME_FPS)
 
     draw(WIN, images, player_car, computer_car, game_info)
 
@@ -328,10 +298,10 @@ while run:
 
     if game_info.game_finished():
         blit_text_center(WIN, MAIN_FONT, "You won the game!")
-        acc_sound.stop()
-        winning_sound.play()
+        ACC_SOUND.stop()
+        WINNING_SOUND.play()
         pygame.time.wait(5000)
-        winning_sound.stop()
+        WINNING_SOUND.stop()
         game_info.reset()
         player_car.reset()
         computer_car.reset()
