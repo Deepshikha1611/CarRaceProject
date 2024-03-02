@@ -1,5 +1,7 @@
 import pygame
 
+import os
+
 from utils.helper import scale_image
 
 GRASS_IMAGE = scale_image(pygame.image.load("src/assets/images/grass.jpg"), 2.5)
@@ -12,3 +14,4 @@ RED_CAR_IMAGE = scale_image(pygame.image.load("src/assets/images/red-car.png"), 
 GREEN_CAR_IMAGE = scale_image(
     pygame.image.load("src/assets/images/green-car.png"), 0.55
 )
+
