@@ -3,7 +3,7 @@ import pygame
 pygame.font.init()
 
 
-def scale_image(img, factor):
+def scale_image(img: pygame.Surface, factor: float) -> pygame.Surface:
     size = round(img.get_width() * factor), round(img.get_height() * factor)
     return pygame.transform.scale(img, size)
 
