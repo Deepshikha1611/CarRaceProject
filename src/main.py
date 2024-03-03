@@ -92,13 +92,14 @@ def handle_collision(player_car, computer_car, game_info):
 
     computer_finish_poi_collide = computer_car.collide(FINISH_MASK, *FINISH_POSITION)
     if computer_finish_poi_collide != None:
-        blit_text_center(WIN, MAIN_FONT, "You lost!")
         ACC_SOUND.stop()
         LOSING_SOUND.play()
-        pygame.display.update()
-        
-        pygame.time.wait(5000)
+        AnimationFactory.getCls(AnimationType.LOSE).draw(WIN,clock) 
+        blit_text_center(WIN, MAIN_FONT, "YOU LOST!")
         LOSING_SOUND.stop()
+        pygame.display.update()
+        pygame.time.wait(5000)
+        draw(WIN, images, player_car, computer_car, game_info)
         game_info.reset()
         player_car.reset()
         computer_car.reset()
@@ -120,7 +121,7 @@ while run:
 
     while not game_info.started:
         blit_text_center(
-            WIN, MAIN_FONT, f"Press any key to start level {game_info.level}!"
+            WIN, MAIN_FONT, f"Press Any Key To Start Level {game_info.level}!"
         )
         pygame.display.update()
         for event in pygame.event.get():
@@ -142,11 +143,13 @@ while run:
     handle_collision(player_car, computer_car, game_info)
 
     if game_info.game_finished():
-        blit_text_center(WIN, MAIN_FONT, "You won the game!")
         ACC_SOUND.stop()
         WINNING_SOUND.play()
-        pygame.time.wait(5000)
+        AnimationFactory.getCls(AnimationType.WINNING).draw(WIN,clock)
+        blit_text_center(WIN, MAIN_FONT, "YOU WON THE GAME!")
         WINNING_SOUND.stop()
+        pygame.time.wait(5000)
+        draw(WIN, images, player_car, computer_car, game_info)
         game_info.reset()
         player_car.reset()
         computer_car.reset()
