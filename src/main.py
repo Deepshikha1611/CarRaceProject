@@ -11,15 +11,14 @@ pygame.font.init()
 pygame.init()
 pygame.mixer.init()
 
+from components.animations import AnimationFactory, AnimationType
 from components.car import ComputerCar, PlayerCar
 from components.game_info import GameInfo
 from constants import COMPUTER_PATH, FINISH_POSITION, GAME_FPS
 from constants.images import FINISH_IMAGE, GRASS_IMAGE, TRACK_BORDER_IMAGE, TRACK_IMAGE
 from constants.sounds import ACC_SOUND, LOSING_SOUND, WINNING_SOUND
-from components.animations import AnimationFactory, AnimationType
 
 TRACK_BORDER_MASK = pygame.mask.from_surface(TRACK_BORDER_IMAGE)
-
 FINISH_MASK = pygame.mask.from_surface(FINISH_IMAGE)
 
 WIDTH, HEIGHT = TRACK_IMAGE.get_width(), TRACK_IMAGE.get_height()
@@ -39,7 +38,7 @@ images = [
 player_car = PlayerCar(4, 4)
 computer_car = ComputerCar(2, 4, COMPUTER_PATH)
 game_info = GameInfo()
-    
+
 
 def draw(win, images, player_car, computer_car, game_info):
     for img, pos in images:
@@ -94,8 +93,14 @@ def handle_collision(player_car, computer_car, game_info):
     if computer_finish_poi_collide != None:
         ACC_SOUND.stop()
         LOSING_SOUND.play()
+<<<<<<< HEAD
         AnimationFactory.getCls(AnimationType.LOSE).draw(WIN,clock) 
         blit_text_center(WIN, MAIN_FONT, "YOU LOST!")
+=======
+        pygame.display.update()
+
+        pygame.time.wait(5000)
+>>>>>>> 69282c90df1a6050c27bb51b082b89c66cae98a8
         LOSING_SOUND.stop()
         pygame.display.update()
         pygame.time.wait(5000)
@@ -158,4 +163,3 @@ while run:
 pygame.quit()
 
 sys.exit()
-

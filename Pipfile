@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 pygame = "*"
+pytest = "*"
+pytest-cov = "*"
 
 [dev-packages]
 pylint = "*"
