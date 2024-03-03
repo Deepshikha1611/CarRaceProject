@@ -26,9 +26,6 @@ class Animation:
         while(frame_index<=len(self.frames) and counter==0):
             if frame_index==len(self.frames)-1:
                 counter+=1
-            print(counter)
-            print(frame_index)
-            print(len(self.frames))
             # Blit the current frame onto the screen
             win.blit(self.frames[frame_index], (75, 250))
             
