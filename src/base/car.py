@@ -48,4 +48,3 @@ class AbstractCar:
     def reset(self) -> None:
         self.x, self.y = self.START_POS
         self.angle = 0
-        self.vel = 0

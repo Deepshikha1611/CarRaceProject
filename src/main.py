@@ -93,7 +93,7 @@ def handle_collision(player_car, computer_car, game_info):
     if computer_finish_poi_collide != None:
         ACC_SOUND.stop()
         LOSING_SOUND.play()
-        AnimationFactory.getCls(AnimationType.LOSE).draw(WIN,clock) 
+        AnimationFactory.getCls(AnimationType.LOSE).draw(WIN, clock)
         blit_text_center(WIN, MAIN_FONT, "YOU LOST!")
         LOSING_SOUND.stop()
         pygame.display.update()
@@ -144,7 +144,7 @@ while run:
     if game_info.game_finished():
         ACC_SOUND.stop()
         WINNING_SOUND.play()
-        AnimationFactory.getCls(AnimationType.WINNING).draw(WIN,clock)
+        AnimationFactory.getCls(AnimationType.WINNING).draw(WIN, clock)
         blit_text_center(WIN, MAIN_FONT, "YOU WON THE GAME!")
         WINNING_SOUND.stop()
         pygame.time.wait(5000)

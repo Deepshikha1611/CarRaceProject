@@ -2,13 +2,18 @@ import pygame
 
 from utils.helper import scale_image
 
-GRASS_IMAGE = scale_image(pygame.image.load("src/assets/images/grass.jpg"), 2.5)
-TRACK_IMAGE = scale_image(pygame.image.load("src/assets/images/track.png"), 0.9)
+IMAGE_SCALE = 0.8
+CAR_SCALE = 0.55
+
+GRASS_IMAGE = scale_image(pygame.image.load("src/assets/images/grass.jpg"), IMAGE_SCALE)
+TRACK_IMAGE = scale_image(pygame.image.load("src/assets/images/track.png"), IMAGE_SCALE)
 FINISH_IMAGE = pygame.image.load("src/assets/images/finish.png")
 TRACK_BORDER_IMAGE = scale_image(
-    pygame.image.load("src/assets/images/track-border.png"), 0.9
+    pygame.image.load("src/assets/images/track-border.png"), IMAGE_SCALE
 )
-RED_CAR_IMAGE = scale_image(pygame.image.load("src/assets/images/red-car.png"), 0.55)
+RED_CAR_IMAGE = scale_image(
+    pygame.image.load("src/assets/images/red-car.png"), CAR_SCALE
+)
 GREEN_CAR_IMAGE = scale_image(
-    pygame.image.load("src/assets/images/green-car.png"), 0.55
+    pygame.image.load("src/assets/images/green-car.png"), CAR_SCALE
 )

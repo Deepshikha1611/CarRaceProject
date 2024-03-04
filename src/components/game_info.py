@@ -14,7 +14,7 @@ class GameInfo:
         self.started = False
 
     def reset(self) -> None:
-        self.level = 1
+        # self.level = 1
         self.started = False
         self.level_start_time = 0
 
