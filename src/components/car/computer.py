@@ -8,7 +8,7 @@ from src.constants.images import GREEN_CAR_IMAGE
 
 class ComputerCar(AbstractCar):
     IMG = GREEN_CAR_IMAGE
-    START_POS = (150, 200)
+    START_POS = (660, 300)
 
     def __init__(self, max_vel, rotation_vel, path=[]):
         super().__init__(max_vel, rotation_vel)
@@ -59,3 +59,7 @@ class ComputerCar(AbstractCar):
         self.reset()
         self.vel = self.max_vel + (level - 1) * 0.2
         self.current_point = 0
+
+    def reset(self) -> None:
+        self.current_point = 0
+        super().reset()
