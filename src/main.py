@@ -5,18 +5,23 @@ import sys
 
 import pygame
 
-from utils.helper import blit_text_center
+from src.utils.helper import blit_text_center
 
 pygame.font.init()
 pygame.init()
 pygame.mixer.init()
 
-from components.animations import AnimationFactory, AnimationType
-from components.car import ComputerCar, PlayerCar
-from components.game_info import GameInfo
-from constants import COMPUTER_PATH, FINISH_POSITION, GAME_FPS
-from constants.images import FINISH_IMAGE, GRASS_IMAGE, TRACK_BORDER_IMAGE, TRACK_IMAGE
-from constants.sounds import ACC_SOUND, LOSING_SOUND, WINNING_SOUND
+from src.components.animations import AnimationFactory, AnimationType
+from src.components.car import ComputerCar, PlayerCar
+from src.components.game_info import GameInfo
+from src.constants import COMPUTER_PATH, FINISH_POSITION, GAME_FPS
+from src.constants.images import (
+    FINISH_IMAGE,
+    GRASS_IMAGE,
+    TRACK_BORDER_IMAGE,
+    TRACK_IMAGE,
+)
+from src.constants.sounds import ACC_SOUND, LOSING_SOUND, WINNING_SOUND
 
 TRACK_BORDER_MASK = pygame.mask.from_surface(TRACK_BORDER_IMAGE)
 FINISH_MASK = pygame.mask.from_surface(FINISH_IMAGE)
@@ -86,14 +91,14 @@ def move_player(player_car):
 
 
 def handle_collision(player_car, computer_car, game_info):
-    if player_car.collide(TRACK_BORDER_MASK) != None:
+    if player_car.collide(TRACK_BORDER_MASK) is not None:
         player_car.bounce()
 
     computer_finish_poi_collide = computer_car.collide(FINISH_MASK, *FINISH_POSITION)
-    if computer_finish_poi_collide != None:
+    if computer_finish_poi_collide is not None:
         ACC_SOUND.stop()
         LOSING_SOUND.play()
-        AnimationFactory.getCls(AnimationType.LOSE).draw(WIN,clock) 
+        AnimationFactory.get_animation(AnimationType.LOSE).draw(WIN, clock)
         blit_text_center(WIN, MAIN_FONT, "YOU LOST!")
         LOSING_SOUND.stop()
         pygame.display.update()
@@ -104,7 +109,7 @@ def handle_collision(player_car, computer_car, game_info):
         computer_car.reset()
 
     player_finish_poi_collide = player_car.collide(FINISH_MASK, *FINISH_POSITION)
-    if player_finish_poi_collide != None:
+    if player_finish_poi_collide is not None:
         if player_finish_poi_collide[1] == 0:
             player_car.bounce()
         else:
@@ -144,7 +149,7 @@ while run:
     if game_info.game_finished():
         ACC_SOUND.stop()
         WINNING_SOUND.play()
-        AnimationFactory.getCls(AnimationType.WINNING).draw(WIN,clock)
+        AnimationFactory.get_animation(AnimationType.WINNING).draw(WIN, clock)
         blit_text_center(WIN, MAIN_FONT, "YOU WON THE GAME!")
         WINNING_SOUND.stop()
         pygame.time.wait(5000)

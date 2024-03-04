@@ -2,8 +2,8 @@ import math
 
 import pygame
 
-from base.car import AbstractCar
-from constants.images import GREEN_CAR_IMAGE
+from src.base.car import AbstractCar
+from src.constants.images import GREEN_CAR_IMAGE
 
 
 class ComputerCar(AbstractCar):
@@ -19,10 +19,6 @@ class ComputerCar(AbstractCar):
     def draw_points(self, win: pygame.Surface) -> None:
         for point in self.path:
             pygame.draw.circle(win, (255, 0, 0), point, 5)
-
-    def draw(self, win: pygame.Surface) -> None:
-        super().draw(win)
-        # self.draw_points(win)
 
     def calculate_angle(self):
         target_x, target_y = self.path[self.current_point]

@@ -1,3 +1,4 @@
+# pylint: disable=
 import os
 from enum import Enum
 from typing import List
@@ -22,13 +23,13 @@ class Animation:
 
     def draw(self, win: pygame.Surface, clock: pygame.time.Clock) -> None:
         frame_index = 0
-        counter=0
-        while(frame_index<=len(self.frames) and counter==0):
-            if frame_index==len(self.frames)-1:
-                counter+=1
+        counter = 0
+        while frame_index <= len(self.frames) and counter == 0:
+            if frame_index == len(self.frames) - 1:
+                counter += 1
             # Blit the current frame onto the screen
             win.blit(self.frames[frame_index], (75, 250))
-            
+
             # Update the frame index for the next frame
             frame_index = (frame_index + 1) % len(self.frames)
             pygame.display.flip()
@@ -42,8 +43,9 @@ class AnimationType(Enum):
 
 class AnimationFactory:
     @staticmethod
-    def getCls(type: AnimationType) -> Animation:
-        if type == AnimationType.WINNING:
+    def get_animation(animation_type: AnimationType) -> Animation:
+        if animation_type == AnimationType.WINNING:
             return Animation("src/assets/images/winning-frames")
-        elif type == AnimationType.LOSE:
+        if animation_type == AnimationType.LOSE:
             return Animation("src/assets/images/losing-frames")
+        raise Exception("Unknown Animation Type")

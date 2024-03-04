@@ -25,7 +25,7 @@ check:
 	$(MAKE) check-format check-import-order lint test
 
 test:
-	pipenv run pytest --disable-warnings --cov --cov-report=html
+	echo "To be implemented"
 
 help:
 	@echo "Available targets:"

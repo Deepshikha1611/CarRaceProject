@@ -1,6 +1,6 @@
 import pygame
 
-from utils.helper import scale_image
+from src.utils.helper import scale_image
 
 GRASS_IMAGE = scale_image(pygame.image.load("src/assets/images/grass.jpg"), 2.5)
 TRACK_IMAGE = scale_image(pygame.image.load("src/assets/images/track.png"), 0.9)

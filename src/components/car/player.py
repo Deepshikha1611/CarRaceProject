@@ -1,5 +1,5 @@
-from base.car import AbstractCar
-from constants.images import RED_CAR_IMAGE
+from src.base.car import AbstractCar
+from src.constants.images import RED_CAR_IMAGE
 
 
 class PlayerCar(AbstractCar):

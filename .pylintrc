@@ -1,0 +1,4 @@
+[MASTER]
+ignore=tests.py, urls.py, manage.py, migrations, settings.py
+disable=
+    too-few-public-methods,broad-exception-raised,attribute-defined-outside-init,no-member,invalid-name,missing-class-docstring,missing-function-docstring,missing-module-docstring,dangerous-default-value,redefined-outer-name,wrong-import-position
