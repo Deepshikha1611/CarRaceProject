@@ -14,7 +14,7 @@ import math
 
 import pygame
 
-from src.utils.helper import blit_rotate_center
+from utils.helper import blit_rotate_center
 
 
 class AbstractCar:

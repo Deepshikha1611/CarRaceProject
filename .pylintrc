@@ -1,4 +1,4 @@
 [MASTER]
-ignore=tests.py, urls.py, manage.py, migrations, settings.py
+init-hook='import sys; import os; sys.path.append(os.path.join(os.getcwd(), "src"))'
 disable=
-    too-few-public-methods,broad-exception-raised,attribute-defined-outside-init,no-member,invalid-name,missing-class-docstring,missing-function-docstring,missing-module-docstring,dangerous-default-value,redefined-outer-name,wrong-import-position
+    no-member,dangerous-default-value,too-many-instance-attributes
