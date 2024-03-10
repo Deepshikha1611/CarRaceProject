@@ -74,7 +74,7 @@ class Animation:
             if frame_index == len(self.frames) - 1:
                 counter += 1
             # Blit the current frame onto the screen
-            win.blit(self.frames[frame_index], (75, 250))
+            win.blit(self.frames[frame_index], (30, 225))
 
             # Update the frame index for the next frame
             frame_index = (frame_index + 1) % len(self.frames)

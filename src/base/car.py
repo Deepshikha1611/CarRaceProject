@@ -132,4 +132,5 @@ class AbstractCar:
             None
         """
         self.x, self.y = self.START_POS
+        self.vel = 0
         self.angle = 0

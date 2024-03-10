@@ -53,16 +53,7 @@ class RacingGame:
         """
         Initializes a RacingGame object.
         """
-        pygame.font.init()
-        pygame.init()
-        pygame.mixer.init()
-        track_image = ImageFactory.get_image(ImageEnum.TRACK_IMAGE)
-        self.width = track_image.get_width()
-        self.height = track_image.get_height()
-
-        self.window = pygame.display.set_mode(
-            (track_image.get_width(), track_image.get_height())
-        )
+        self.init_pygame()
 
         pygame.display.set_caption("Racing Game!")
 
@@ -70,15 +61,43 @@ class RacingGame:
 
         self.run = True
         self.clock = pygame.time.Clock()
+
+        self.player_car = PlayerCar(4, 4)
+        self.computer_car = ComputerCar(2, 4, COMPUTER_PATH)
+        self.game_info = GameInfo()
+        self.init_images()
+        self.init_sounds()
+
+    def init_pygame(self):
+        """
+        Initializes the pygame.
+        """
+        pygame.font.init()
+        pygame.init()
+        pygame.mixer.init()
+
+    def init_images(self):
+        """
+        Initializes the images objects.
+        """
+        track_image = ImageFactory.get_image(ImageEnum.TRACK_IMAGE)
+        self.width = track_image.get_width()
+        self.height = track_image.get_height()
+
+        self.window = pygame.display.set_mode(
+            (track_image.get_width(), track_image.get_height())
+        )
         self.images = [
             (ImageFactory.get_image(ImageEnum.GRASS_IMAGE), (0, 0)),
             (track_image, (0, 0)),
             (ImageFactory.get_image(ImageEnum.FINISH_IMAGE), FINISH_POSITION),
             (ImageFactory.get_image(ImageEnum.TRACK_BORDER_IMAGE), (0, 0)),
         ]
-        self.player_car = PlayerCar(4, 4)
-        self.computer_car = ComputerCar(2, 4, COMPUTER_PATH)
-        self.game_info = GameInfo()
+
+    def init_sounds(self):
+        """
+        Initializes the sounds.
+        """
         self.acceration_sound = SoundFactory.get_sound(SoundEnum.ACCELERATION_SOUND)
         self.losing_sound = SoundFactory.get_sound(SoundEnum.LOSING_SOUND)
         self.winning_sound = SoundFactory.get_sound(SoundEnum.WINNING_SOUND)
@@ -90,8 +109,7 @@ class RacingGame:
         for img, pos in self.images:
             self.window.blit(img, pos)
 
-        text_color = (255, 255, 255)
-        text_antialias = 1
+        text_color, text_antialias = (255, 255, 255), 1
 
         level_text = self.main_font.render(
             f"Level {self.game_info.level}", text_antialias, text_color
@@ -133,7 +151,7 @@ class RacingGame:
 
         if moved:
             self.acceration_sound.set_volume(0.2)
-            self.acceration_sound.play()
+            # self.acceration_sound.play()
 
         if not moved:
             self.player_car.reduce_speed()
@@ -198,6 +216,7 @@ class RacingGame:
             if player_finish_poi_collide[1] == 0:
                 self.player_car.bounce()
             else:
+                self.acceration_sound.stop()
                 self.game_info.next_level()
                 self.player_car.reset()
                 self.computer_car.next_level(self.game_info.level)
@@ -208,7 +227,6 @@ class RacingGame:
         """
         while self.run:
             self.clock.tick(GAME_FPS)
-
             self.draw()
 
             while not self.game_info.started:
@@ -237,6 +255,6 @@ class RacingGame:
             self.handle_collision()
 
             if self.game_info.game_finished():
-                self.window()
+                self.win()
 
         pygame.quit()
