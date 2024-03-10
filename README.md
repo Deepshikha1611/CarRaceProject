@@ -1,4 +1,4 @@
-# Car Race Project
+# Car Race Project [![Python Tests](https://github.com/babutabhavya/CarRaceProject/actions/workflows/python.yml/badge.svg)](https://github.com/babutabhavya/CarRaceProject/actions/workflows/python.yml)
 
 #### ***Advanced Programming Project, Masters of Computer Science, student at SRH, Berlin School of Technology***
 
@@ -55,3 +55,25 @@ Now you should have Make installed on your Windows system. You can proceed with 
 - **`test`**: Run pytest to execute all tests in the project with coverage.
 - **`help`**: Display a help message with available Makefile targets and their explanations.
 
+## Design Patterns
+
+- [Factory](https://github.com/Deepshikha1611/CarRaceProject/blob/main/src/components/animations/main.py)
+- [Abstract](https://github.com/Deepshikha1611/CarRaceProject/blob/main/src/base/car.py)
+
+
+## Checklists
+
+- [x] The game is working
+- [x] There is a Git repository
+- [x] There is a README file including installation instructions
+- [x] There is a requirements.txt or pyproject.toml file
+- [x] No function is longer than 20 lines
+- [x] There is at least one class with 3+ attributes and 3+ methods
+- [x] There is a class diagram, sequence diagram, state diagram, or other type of design diagram
+- [x] There are 3+ automated tests that pass
+- [x] The project uses Continuous Integration
+- [x] Python style checks pass
+- [x] The project is pip-installable
+- [x] The game contains custom graphics
+- [x] The game contains sound effects and/or music
+- [x] Great gameplay (up to 2 points)
