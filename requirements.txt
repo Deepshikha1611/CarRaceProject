@@ -1,2 +1,9 @@
 -i https://pypi.org/simple
-pygame==2.5.2
+colorama==0.4.6; sys_platform == 'win32'
+coverage[toml]==7.4.3; python_version >= '3.8'
+iniconfig==2.0.0; python_version >= '3.7'
+packaging==24.0; python_version >= '3.7'
+pluggy==1.4.0; python_version >= '3.8'
+pygame==2.5.2; python_version >= '3.6'
+pytest==8.1.1; python_version >= '3.8'
+pytest-cov==4.1.0; python_version >= '3.7'
