@@ -151,7 +151,7 @@ class RacingGame:
 
         if moved:
             self.acceration_sound.set_volume(0.2)
-            # self.acceration_sound.play()
+            self.acceration_sound.play()
 
         if not moved:
             self.player_car.reduce_speed()
