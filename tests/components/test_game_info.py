@@ -1,5 +1,3 @@
-import time
-
 import pytest
 
 from src.components.game_info import GameInfo
@@ -34,9 +32,3 @@ def test_start_level(game_info):
     game_info.start_level()
     assert game_info.started
     assert game_info.level_start_time != 0
-
-
-# def test_get_level_time(game_info, monkeypatch):
-#     monkeypatch.setattr(time, "time", lambda: 10.5)
-#     game_info.start_level()
-#     assert game_info.get_level_time() == 11
