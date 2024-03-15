@@ -82,7 +82,7 @@ Now you should have Make installed on your Windows system. You can proceed with 
 
 -Use the following keys to play the game
 
-W-forward
-A-turn left
-S-brake or move backward
-D-right
+- W-forward
+- A-turn left
+- S-brake or move backward
+- D-right
