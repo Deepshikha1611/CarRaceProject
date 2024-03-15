@@ -77,3 +77,12 @@ Now you should have Make installed on your Windows system. You can proceed with 
 - [x] The game contains custom graphics
 - [x] The game contains sound effects and/or music
 - [x] Great gameplay (up to 2 points)
+
+## Game play instructions :car:
+
+-Use the following keys to play the game
+
+W-forward
+A-turn left
+S-brake or move backward
+D-right
