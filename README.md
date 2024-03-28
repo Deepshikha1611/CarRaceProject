@@ -1,6 +1,11 @@
 # Car Race Project [![Python Tests](https://github.com/babutabhavya/CarRaceProject/actions/workflows/python.yml/badge.svg)](https://github.com/babutabhavya/CarRaceProject/actions/workflows/python.yml)
 
-#### ***Advanced Programming Project, Masters of Computer Science, student at SRH, Berlin School of Technology***
+#### ***Advanced Programming Project, Masters of Computer Science, SRH, Berlin School of Technology***
+
+## Team Member Details:
+1.  Bhavya Babuta - 3120456
+2.  Deepshikha - 3118045
+3.  Francisco Saavedra Gonzalez - 3121202
 
 ## Table of Contents
 
@@ -86,3 +91,13 @@ Now you should have Make installed on your Windows system. You can proceed with 
 - A-turn left
 - S-brake or move backward
 - D-right
+
+## References
+
+- The code was developed using the [Pygame Car Racing Tutorial by TechWithTim](https://www.youtube.com/watch?v=L3ktUWfAMPg&t=2292s)
+- The GIF Images are used from https://tenor.com/view/
+- [Winning Gif](https://tenor.com/view/wow-winning-race-car-racing-car-racer-gif-15169358), [Losing Gif](https://tenor.com/view/out-of-control-motorsports-on-nbc-nascar-on-nbc-lose-control-drifting-gif-18116496)
+- The sound are used from https://pixabay.com/sound-effects/
+- [Acceleration Sound](https://pixabay.com/sound-effects/car-acceleration-inside-car-7087/)
+- [Losing Sound](https://pixabay.com/sound-effects/8-bit-video-game-fail-version-2-145478/)
+- [Winning Sound](https://pixabay.com/sound-effects/crowd-cheering-143103/)
