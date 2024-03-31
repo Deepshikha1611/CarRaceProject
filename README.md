@@ -98,9 +98,9 @@ Now you should have Make installed on your Windows system. You can proceed with 
 - The GIF Images are used from https://tenor.com/view/
 - [Winning Gif](https://tenor.com/view/wow-winning-race-car-racing-car-racer-gif-15169358), [Losing Gif](https://tenor.com/view/out-of-control-motorsports-on-nbc-nascar-on-nbc-lose-control-drifting-gif-18116496)
 - [Background image](https://www.istockphoto.com/de/vektor/textur-von-gr%C3%BCnem-gras-auf-dem-fu%C3%9Fballplatz-gm1397509122-451918466mediatype=illustration&phrase=grass+top+view)
-- [Trees added to the background with photosho](https://pngtree.com/freepng/green-cartoon-forest-material-big-tree-illustration-tree-clipart_5563889.html)
-- [Car obtained from and resized pixels and color edited with photoshop](https://pngtree.com/freepng/cool-sports-car-top-view-vector_9068335.html)
-- [The track was obtained from and borders edited with photoshop](https://www.pngwing.com/en/free-png-hvbdh)
+- [Trees added to the background with photoshoP](https://pngtree.com/freepng/green-cartoon-forest-material-big-tree-illustration-tree-clipart_5563889.html)
+- [Car and resized pixels and color edited with photoshop](https://pngtree.com/freepng/cool-sports-car-top-view-vector_9068335.html)
+- [The track and borders edited with photoshop](https://www.pngwing.com/en/free-png-hvbdh)
 - The sound are used from https://pixabay.com/sound-effects/
 - [Acceleration Sound](https://pixabay.com/sound-effects/car-acceleration-inside-car-7087/)
 - [Losing Sound](https://pixabay.com/sound-effects/8-bit-video-game-fail-version-2-145478/)
